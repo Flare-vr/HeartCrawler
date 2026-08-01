@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://ddr2v5vbsm3i7"]
+
+[ext_resource type="PackedScene" uid="uid://bxas2am5sqg3q" path="res://Scenes/enemy_character.tscn" id="1_jv6wh"]
+[ext_resource type="PackedScene" uid="uid://c70kg0tbmdoec" path="res://Scenes/player_character.tscn" id="2_x6ack"]
+[ext_resource type="Texture2D" uid="uid://b05pd4etno58" path="res://Assets/TimeTicker.png" id="3_iacmt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ev3c"]
+atlas = ExtResource("3_iacmt")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maf8m"]
+atlas = ExtResource("3_iacmt")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huasi"]
+atlas = ExtResource("3_iacmt")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1efj"]
+atlas = ExtResource("3_iacmt")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mai8y"]
+atlas = ExtResource("3_iacmt")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76v2p"]
+atlas = ExtResource("3_iacmt")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drdnd"]
+atlas = ExtResource("3_iacmt")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioaeq"]
+atlas = ExtResource("3_iacmt")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ewk0"]
+atlas = ExtResource("3_iacmt")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lhp3t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ev3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maf8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huasi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1efj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mai8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76v2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drdnd")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ioaeq")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_7ewk0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="MainScene" type="Node2D" unique_id=1965674165]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1035343059]
+offset_left = -297.0
+offset_top = -1.0
+offset_right = 298.0
+offset_bottom = 171.0
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=875737036]
+zoom = Vector2(2, 2)
+
+[node name="EnemyCharacter" parent="." unique_id=1130760560 instance=ExtResource("1_jv6wh")]
+position = Vector2(54, -83)
+
+[node name="EnemyCharacter2" parent="." unique_id=800393502 instance=ExtResource("1_jv6wh")]
+position = Vector2(128, -83)
+
+[node name="EnemyCharacter3" parent="." unique_id=196762828 instance=ExtResource("1_jv6wh")]
+position = Vector2(205, -83)
+
+[node name="PlayerCharacter" parent="." unique_id=55899949 instance=ExtResource("2_x6ack")]
+position = Vector2(-108, -86)
+
+[node name="PlayerActionTimer" type="AnimatedSprite2D" parent="." unique_id=632781885]
+position = Vector2(238, 42)
+sprite_frames = SubResource("SpriteFrames_lhp3t")
+autoplay = "default"
+frame_progress = 0.8596646
+
+[node name="Control" type="Control" parent="." unique_id=131405557]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control" unique_id=229184998]
+layout_mode = 0
+offset_left = -276.0
+offset_top = 11.0
+offset_right = -214.0
+offset_bottom = 42.0
+text = " Attack"
+
+[node name="Button2" type="Button" parent="Control" unique_id=1451702720]
+layout_mode = 0
+offset_left = -196.0
+offset_top = 12.0
+offset_right = -146.0
+offset_bottom = 43.0
+text = "Block"
+
+[node name="Button3" type="Button" parent="Control" unique_id=747403851]
+layout_mode = 0
+offset_left = -275.0
+offset_top = 51.0
+offset_right = -232.0
+offset_bottom = 82.0
+text = "Heal"
+
+[node name="Button4" type="Button" parent="Control" unique_id=1669070503]
+layout_mode = 0
+offset_left = -193.0
+offset_top = 56.0
+offset_right = -185.0
+offset_bottom = 64.0
+text = "Second Wind"
