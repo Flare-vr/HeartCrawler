@@ -1,16 +1,32 @@
 [gd_scene format=3 uid="uid://bxas2am5sqg3q"]
 
 [ext_resource type="Script" uid="uid://by0l8n61crqmq" path="res://Scripts/enemy_character.gd" id="1_sqa42"]
-[ext_resource type="Script" uid="uid://wh7lnwu1k5mt" path="res://Scripts/CharacterResource.gd" id="2_5k6cu"]
+[ext_resource type="Script" uid="uid://nepv80vm6h4" path="res://Scripts/AttackResource.gd" id="2_5k6cu"]
+[ext_resource type="Script" uid="uid://dpkug73nisyla" path="res://Scripts/MoveResource.gd" id="2_n37lv"]
 [ext_resource type="Texture2D" uid="uid://d2b531bg28672" path="res://Assets/BloodMarrow.png" id="3_n37lv"]
 [ext_resource type="Texture2D" uid="uid://dq7pvb56pxqkq" path="res://Assets/ButtonsAndStuff.png" id="4_umhxm"]
 [ext_resource type="Texture2D" uid="uid://d0h5w3dgd4b6a" path="res://Assets/EnemyIntentionMarker.png" id="5_5k6cu"]
 
-[sub_resource type="Resource" id="Resource_w4pgr"]
+[sub_resource type="Resource" id="Resource_drdnd"]
+script = ExtResource("2_n37lv")
+name = "Claw"
+actionCode = "PDM1"
+cost = 1
+metadata/_custom_type_script = "uid://dpkug73nisyla"
+
+[sub_resource type="Resource" id="Resource_ioaeq"]
+script = ExtResource("2_n37lv")
+name = "Blood Rend"
+actionCode = "PDM5,EDM2"
+cost = 3
+metadata/_custom_type_script = "uid://dpkug73nisyla"
+
+[sub_resource type="Resource" id="Resource_kvg18"]
 script = ExtResource("2_5k6cu")
-Name = "Enemy"
-maxEnergy = 1
-metadata/_custom_type_script = "uid://wh7lnwu1k5mt"
+attackPattern = [0, 1]
+attack1 = SubResource("Resource_drdnd")
+attack2 = SubResource("Resource_ioaeq")
+metadata/_custom_type_script = "uid://nepv80vm6h4"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nsn3q"]
 atlas = ExtResource("3_n37lv")
@@ -22,7 +38,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nsn3q")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -102,54 +118,53 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0drx0")
 }],
-"loop": true,
+"loop": 0,
 "name": &"default",
 "speed": 2.0
 }]
 
-[node name="EnemyCharacter" type="Node2D" unique_id=1130760560]
+[node name="EnemyCharacter" type="Button" unique_id=1665311773]
+offset_left = -31.0
+offset_top = -40.0
+offset_right = 31.0
+offset_bottom = 39.0
+disabled = true
 script = ExtResource("1_sqa42")
-enemyRes = SubResource("Resource_w4pgr")
+options = SubResource("Resource_kvg18")
 
 [node name="Timer" type="Timer" parent="." unique_id=1842346774]
-wait_time = 1.5999999999999999
+wait_time = 1.6
 one_shot = true
-autostart = true
 
 [node name="EnemySprite" type="AnimatedSprite2D" parent="." unique_id=1280084777]
+position = Vector2(32, 40)
 sprite_frames = SubResource("SpriteFrames_axu16")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1546574614]
-offset_left = -26.0
-offset_top = 40.0
-offset_right = 26.0
-offset_bottom = 53.0
-value = 50.0
+layout_mode = 0
+offset_left = 6.0
+offset_top = 80.0
+offset_right = 58.0
+offset_bottom = 93.0
+max_value = 8.0
+value = 8.0
 nine_patch_stretch = true
 stretch_margin_left = 7
 stretch_margin_top = 6
 stretch_margin_right = 7
-stretch_margin_bottom = 7
+stretch_margin_bottom = 6
 texture_under = SubResource("AtlasTexture_rtwnx")
 texture_over = SubResource("AtlasTexture_s8a1l")
 texture_progress = SubResource("AtlasTexture_sa5e1")
 tint_under = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="." unique_id=203423577]
-offset_left = -31.0
-offset_top = -39.0
-offset_right = 30.0
-offset_bottom = 38.0
-
 [node name="EnemyIntention" type="Sprite2D" parent="." unique_id=353590969]
-position = Vector2(-1, -48)
+position = Vector2(31, -8)
 texture = SubResource("AtlasTexture_n37lv")
 
 [node name="EnemyTimer" type="AnimatedSprite2D" parent="." unique_id=428812577]
-position = Vector2(0, 61)
+position = Vector2(32, 101)
 sprite_frames = SubResource("SpriteFrames_oikph")
-autoplay = "default"
-frame_progress = 0.62469995
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

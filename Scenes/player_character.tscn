@@ -1,16 +1,20 @@
 [gd_scene format=3 uid="uid://c70kg0tbmdoec"]
 
 [ext_resource type="Script" uid="uid://dadjwkog4g6bv" path="res://Scripts/player_character.gd" id="1_qcwfp"]
-[ext_resource type="Script" uid="uid://wh7lnwu1k5mt" path="res://Scripts/CharacterResource.gd" id="2_cmdk4"]
+[ext_resource type="Script" uid="uid://wh7lnwu1k5mt" path="res://Scripts/CharacterResource.gd" id="2_ons1q"]
+[ext_resource type="Texture2D" uid="uid://d0h5w3dgd4b6a" path="res://Assets/EnemyIntentionMarker.png" id="3_ajo0r"]
 [ext_resource type="Texture2D" uid="uid://cksdqkxd07kof" path="res://Assets/Knight-Metal.png" id="3_ons1q"]
 [ext_resource type="Texture2D" uid="uid://vsplppybbh30" path="res://Assets/Knight-Custom.png" id="4_ajo0r"]
 [ext_resource type="Texture2D" uid="uid://ku1lafbjq220" path="res://Assets/Knight-Outline.png" id="5_flf3p"]
 [ext_resource type="Texture2D" uid="uid://dq7pvb56pxqkq" path="res://Assets/ButtonsAndStuff.png" id="6_fcng2"]
 
-[sub_resource type="Resource" id="Resource_ons1q"]
-script = ExtResource("2_cmdk4")
-Name = "Player"
+[sub_resource type="Resource" id="Resource_6ev3c"]
+script = ExtResource("2_ons1q")
 metadata/_custom_type_script = "uid://wh7lnwu1k5mt"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4v7s"]
+atlas = ExtResource("3_ajo0r")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q5hbr"]
 atlas = ExtResource("3_ons1q")
@@ -22,7 +26,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q5hbr")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -37,7 +41,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4pbxa")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -52,7 +56,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_12ptb")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -71,17 +75,21 @@ region = Rect2(16, 17, 16, 14)
 
 [node name="PlayerCharacter" type="Node2D" unique_id=55899949]
 script = ExtResource("1_qcwfp")
-charStats = SubResource("Resource_ons1q")
+stats = SubResource("Resource_6ev3c")
 
-[node name="Timer" type="Timer" parent="." unique_id=1686856509]
-wait_time = 1.5999999999999999
+[node name="BlockingResetTimer" type="Timer" parent="." unique_id=1830500845]
 one_shot = true
-autostart = true
+
+[node name="BlockingIcon" type="Sprite2D" parent="." unique_id=889772565]
+visible = false
+position = Vector2(5, -44)
+texture = SubResource("AtlasTexture_g4v7s")
 
 [node name="NonColor" type="AnimatedSprite2D" parent="." unique_id=179912887]
 sprite_frames = SubResource("SpriteFrames_w775p")
 
 [node name="ChoiceColor" type="AnimatedSprite2D" parent="." unique_id=580776309]
+self_modulate = Color(0.49724507, 0.71179473, 0.7633203, 1)
 sprite_frames = SubResource("SpriteFrames_ews8v")
 
 [node name="Outline" type="AnimatedSprite2D" parent="." unique_id=1142178179]
@@ -98,11 +106,11 @@ nine_patch_stretch = true
 stretch_margin_left = 7
 stretch_margin_top = 6
 stretch_margin_right = 7
-stretch_margin_bottom = 7
+stretch_margin_bottom = 6
 texture_under = SubResource("AtlasTexture_6m2el")
 texture_over = SubResource("AtlasTexture_euix3")
 texture_progress = SubResource("AtlasTexture_nw3ir")
 tint_under = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="BlockingResetTimer" to="." method="_on_blocking_reset_timer_timeout"]

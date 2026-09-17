@@ -1,26 +1,38 @@
 extends Node2D
 @onready var progressBar: TextureProgressBar = $TextureProgressBar
-@onready var timer: Timer = $Timer
+@onready var blockingResetTimer: Timer = $BlockingResetTimer
+@onready var blockingIcon: Sprite2D = $BlockingIcon
+var isBlocking = false
 
-@export var charStats: CharacterResource
+@export var stats: CharacterResource
 
 func _ready() -> void:
-	progressBar.max_value = charStats.maxHealth
-	progressBar.value = charStats.maxHealth
+	progressBar.max_value = stats.maxHealth
+	progressBar.value = stats.maxHealth
 	
 
 func changeHealth(Difference:int):
-	charStats.currentHealth +=Difference
-	if charStats.currentHealth > charStats.maxHealth:
-		charStats.currentHealth = charStats.maxHealth
-	progressBar.value = charStats.currentHealth
+	stats.currentHealth +=Difference
+	if stats.currentHealth > stats.maxHealth:
+		stats.currentHealth = stats.maxHealth
+	progressBar.value = stats.currentHealth
 	
 
-func _on_timer_timeout() -> void:
-	charStats.currentEnergy+=1
-	if charStats.currentEnergy < charStats.maxEnergy:
-		timer.start()
-	
 
 func changeTickSpeed(Mod):
 	pass
+
+
+func takeDamage(num:int):
+	if !isBlocking:
+		stats.currentHealth -=num
+		progressBar.value = stats.currentHealth
+
+func setIsBlocking(frames: int):
+	isBlocking = true
+	blockingResetTimer.start(frames/2)
+	blockingIcon.visible = true
+
+func _on_blocking_reset_timer_timeout() -> void:
+	isBlocking = false
+	blockingIcon.visible = false
