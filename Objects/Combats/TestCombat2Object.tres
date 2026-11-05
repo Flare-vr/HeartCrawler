@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CombatResource" format=3 uid="uid://n8pptfe28ot2"]
+
+[ext_resource type="Resource" uid="uid://bluewa50pqrdq" path="res://Objects/Enemys/CrystalZombieObject.tres" id="1_323he"]
+[ext_resource type="Resource" uid="uid://d1j804ne6lmli" path="res://Objects/Enemys/MarrowMageObject.tres" id="2_seo41"]
+[ext_resource type="Script" uid="uid://be763f80vknok" path="res://Scripts/Classes/CombatResource.gd" id="3_aquel"]
+
+[resource]
+script = ExtResource("3_aquel")
+enemy1 = ExtResource("1_323he")
+enemy2 = ExtResource("1_323he")
+enemy3 = ExtResource("2_seo41")
+enemy4 = ExtResource("2_seo41")
+enemy5 = ExtResource("2_seo41")
+metadata/_custom_type_script = "uid://be763f80vknok"

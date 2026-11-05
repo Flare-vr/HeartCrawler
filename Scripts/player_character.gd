@@ -6,27 +6,38 @@ var isBlocking = false
 
 @export var stats: CharacterResource
 
+@onready var bloodStress: int = stats.maxBloodStress
+var bloodProtection: int = 0
+@onready var brainStress: int = stats.maxBrainStress
+@onready var beatStress: int = stats.maxBeatStress
+
+var headArmor: ItemResource
+var bodyArmor: ItemResource
+var weapon: ItemResource
+var accessoryList: Array
+var Inventory: Array
+
+
+
 func _ready() -> void:
-	progressBar.max_value = stats.maxHealth
-	progressBar.value = stats.maxHealth
+	progressBar.max_value = stats.maxBloodStress
+	progressBar.value = stats.maxBloodStress
 	
-
-func changeHealth(Difference:int):
-	stats.currentHealth +=Difference
-	if stats.currentHealth > stats.maxHealth:
-		stats.currentHealth = stats.maxHealth
-	progressBar.value = stats.currentHealth
-	
-
 
 func changeTickSpeed(Mod):
 	pass
 
-
 func takeDamage(num:int):
 	if !isBlocking:
-		stats.currentHealth -=num
-		progressBar.value = stats.currentHealth
+		if bloodProtection> 0:
+			bloodProtection-=num
+			if bloodProtection< 0:
+				bloodProtection = 0
+		else:
+			bloodStress -=num
+			if bloodStress > stats.maxBloodStress:
+				bloodStress = stats.maxBloodStress
+			progressBar.value = bloodStress
 
 func setIsBlocking(frames: int):
 	isBlocking = true

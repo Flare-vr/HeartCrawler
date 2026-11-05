@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3447est3p1po"
-path="res://.godot/imported/MountanBackground-Forground.png-22daea8622b03d931e3ee4e229321c68.ctex"
+uid="uid://5g14qdhj550h"
+path="res://.godot/imported/CrystalCaveBackground2.png-d15cd838b121985a1f462ef50acefe9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MountanBackground-Forground.png"
-dest_files=["res://.godot/imported/MountanBackground-Forground.png-22daea8622b03d931e3ee4e229321c68.ctex"]
+source_file="res://Assets/CrystalCaveBackground2.png"
+dest_files=["res://.godot/imported/CrystalCaveBackground2.png-d15cd838b121985a1f462ef50acefe9b.ctex"]
 
 [params]
 

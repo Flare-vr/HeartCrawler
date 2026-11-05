@@ -3,7 +3,8 @@ extends Control
 @onready var playerActionTimer: AnimatedSprite2D = $PlayerActionTimer
 @onready var energyCount: Label = $PlayerActionTimer/EnergyCount
 @onready var playerCharacter: Node2D = $"../PlayerCharacter"
-@onready var moveInformation: Label = $"Move Information"
+@onready var infoTab: Label = $InfoTab
+
 
 @export var moveOptions: attacksResource
 var moveList = []
@@ -12,7 +13,7 @@ signal enemyEffectingAction
 
 #Ready Function
 func _ready() -> void:
-	var buttonList = [$Button1,$Button2,$Button3,$Button4]
+	var buttonList = [$TabCon/Attacks/VB/HB1/Button1,$TabCon/Attacks/VB/HB1/Button2,$TabCon/Attacks/VB/HB2/Button3,$TabCon/Attacks/VB/HB2/Button4]
 	moveList = [moveOptions.attack1, moveOptions.attack2, moveOptions.attack3, moveOptions.attack4]
 	for i in range(4):
 		if (moveList[i].name!=""):
@@ -39,7 +40,6 @@ func modeProcess(num: int):
 		var moveTypeList = moveList[num].actionCode.split(",",true, 0)
 		var enemyEffectingMoves = ""
 		
-		print(moveTypeList)
 		for i in range(moveTypeList.size()):
 			if moveTypeList[i].substr(0,1) == "E":
 				if i>0:
@@ -70,7 +70,7 @@ func updateMoveInfo(num: int):
 			gpInfo += str(float(moveTypeList[i].substr(3))/2)
 			gpInfo += " second" + ("s" if float(moveTypeList[i].substr(3))/2 != 1 else "")
 	
-	moveInformation.text = deInfo +gpInfo 
+	infoTab.text = deInfo +gpInfo 
 
 
 func onButton1Pressed() -> void:
@@ -98,7 +98,7 @@ func onButton4MouseOver() -> void:
 	updateMoveInfo(3)
 
 func onButtonMouseLeave() -> void:
-	moveInformation.text = ""
+	infoTab.text = ""
 
 
 

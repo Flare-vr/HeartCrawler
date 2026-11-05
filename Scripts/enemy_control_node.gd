@@ -1,9 +1,11 @@
 extends Node2D
+
 var enemyNum = 3
 var moveCode: String = ""
 var moveRange: Vector2i = Vector2i(-1,-1)
 signal playerEffectingMove
 var enemyPositionList = []
+
 
 #Ready Function
 func _ready() -> void:
@@ -12,6 +14,15 @@ func _ready() -> void:
 		get_child(i).enemyPosition = i
 		enemyPositionList.append(i)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("space"):
+		prepareCombat(load("res://Objects/Combats/TestCombat2Object.tres"))
+
+func prepareCombat(object: CombatResource):
+	var list: Array = [object.enemy1, object.enemy2, object.enemy3, object.enemy4, object.enemy5]
+	for i in range(get_child_count()):
+		get_child(i).global_position = Vector2(-5+(57*i),-115)
+		get_child(i).readyEnemy(list[i],i)
 
 #Utility Functions
 func disableEnemyButtons(isEnabled):
@@ -30,14 +41,13 @@ func getEnemy(num: int):
 func updateEnemyPositions(type: String, enemyPos: int, shift: int):
 	var tween1 = create_tween()
 	var tween2 = create_tween()
-	var enemyPrev = -1
 	var tempEnemyArr = []
 	
 	for i in range(enemyPos, enemyPos+shift+1):
 		tempEnemyArr.append(getEnemy(i))
 	
 	tween1.set_trans(Tween.TRANS_CIRC)
-	tween1.tween_property(tempEnemyArr[0], "position:x", tempEnemyArr[0].position.x+(75*shift), .5)
+	tween1.tween_property(tempEnemyArr[0], "position:x", tempEnemyArr[0].position.x+(57*shift), .5)
 	tween2.set_ease(Tween.EASE_OUT)
 	tween2.set_trans(Tween.TRANS_QUAD)
 	tween2.tween_property(tempEnemyArr[0], "position:y", -130, .15)
@@ -49,11 +59,13 @@ func updateEnemyPositions(type: String, enemyPos: int, shift: int):
 		var tween3 = create_tween()
 		tween3.set_trans(Tween.TRANS_BACK)
 		tween3.tween_property(tempEnemyArr[i], "position:x", tempEnemyArr[i].position.x, .15)
-		tween3.tween_property(tempEnemyArr[i], "position:x", tempEnemyArr[i].position.x-(75*i), .5)
-		tempEnemyArr[i].enemyPosition -= shift
+		tween3.tween_property(tempEnemyArr[i], "position:x", tempEnemyArr[i].position.x-57, .5)
+		tempEnemyArr[i].enemyPosition -= 1
 	
 	for i in range(get_child_count()):
 		enemyPositionList[i] = get_child(i).enemyPosition
+	
+	
 
 #Player Attacking Functions
 func _on_attack_button_enemy_effecting_action(effectTypes:String,effectRange:Vector2i) -> void:
@@ -74,7 +86,6 @@ func moveProcess(num: int):
 			for j in range(moveRange[0], (enemyNum if moveRange[1]>enemyNum else moveRange[1])):
 				getEnemy(j).takeDamage(int(codeList[i].substr(3)))
 		if codeList[i].substr(1,2) == "PS":
-			print("working")
 			updateEnemyPositions("shift", num, int(codeList[i].substr(3)))
 		
 	
@@ -95,6 +106,22 @@ func enemyCharacter2Pressed() -> void:
 
 func enemyCharacter3Pressed() -> void:
 	moveProcess(enemyPositionList[2])
+
+func enemyHasDied(pos):
+	var tempEnemyArr = []
+	
+	for i in range(pos, enemyNum):
+		tempEnemyArr.append(getEnemy(i))
+	
+	for i in range(pos, enemyNum):
+		var tween = create_tween()
+		tween.set_trans(Tween.TRANS_BACK)
+		tween.tween_property(tempEnemyArr[i], "position:x", tempEnemyArr[i].position.x, .15)
+		tween.tween_property(tempEnemyArr[i], "position:x", tempEnemyArr[i].position.x-75, .5)
+		tempEnemyArr[i].enemyPosition -= 1
+	
+	for i in range(get_child_count()):
+		enemyPositionList[i] = get_child(i).enemyPosition
 
 
 ##Enemy Attacking Fuctions

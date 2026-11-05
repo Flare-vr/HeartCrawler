@@ -13,9 +13,8 @@ class_name attacksResource
 #SP: Slow Player
 #SE: Slow Enemy
 
-
-@export var attackPattern:Array = [0]
 @export var attack1: Move 
 @export var attack2: Move 
 @export var attack3: Move 
 @export var attack4: Move 
+@export var attack5: Move 

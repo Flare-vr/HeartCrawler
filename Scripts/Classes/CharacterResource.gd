@@ -1,13 +1,11 @@
 extends Resource
 class_name CharacterResource
 
-@export var Name: String
-@export var spriteFrames:SpriteFrames
-var character:Node2D
-@export var size: int = 1
+@export var maxBloodStress: int = 5
 
-@export var maxHealth: int = 15
-@export var currentHealth: int = 15
+@export var maxBrainStress: int = 5
+
+@export var maxBeatStress: int = 5
 
 @export var maxMana: int = 10
 @export var currentMana: int = 10

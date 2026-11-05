@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://bluewa50pqrdq"]
+
+[ext_resource type="Script" uid="uid://dpkug73nisyla" path="res://Scripts/Classes/MoveResource.gd" id="1_hr37t"]
+[ext_resource type="Script" uid="uid://nepv80vm6h4" path="res://Scripts/Classes/AttackResource.gd" id="2_3guan"]
+[ext_resource type="Script" uid="uid://cm6gbhk3hd0m" path="res://Scripts/Classes/EnemyResource.gd" id="3_pjklp"]
+
+[sub_resource type="Resource" id="Resource_uv8r7"]
+script = ExtResource("1_hr37t")
+name = "Bite"
+actionCode = "PDM2"
+cost = 1
+metadata/_custom_type_script = "uid://dpkug73nisyla"
+
+[sub_resource type="Resource" id="Resource_5qhxe"]
+script = ExtResource("1_hr37t")
+name = "Bludgen"
+actionCode = "PDM4"
+cost = 2
+metadata/_custom_type_script = "uid://dpkug73nisyla"
+
+[sub_resource type="Resource" id="Resource_x3cd2"]
+script = ExtResource("1_hr37t")
+name = "Grow"
+cost = 1
+range = Vector2i(-1, -1)
+metadata/_custom_type_script = "uid://dpkug73nisyla"
+
+[sub_resource type="Resource" id="Resource_naaww"]
+script = ExtResource("2_3guan")
+attack1 = SubResource("Resource_uv8r7")
+attack2 = SubResource("Resource_5qhxe")
+attack3 = SubResource("Resource_x3cd2")
+metadata/_custom_type_script = "uid://nepv80vm6h4"
+
+[resource]
+script = ExtResource("3_pjklp")
+name = "Crystal Zombie"
+maxStress = 12
+movePattern = [2, 0, 1]
+movesList = SubResource("Resource_naaww")
+metadata/_custom_type_script = "uid://cm6gbhk3hd0m"

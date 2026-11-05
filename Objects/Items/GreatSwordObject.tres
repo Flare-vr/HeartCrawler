@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bhp05jmahhj4p"]
+
+[ext_resource type="Script" uid="uid://dpkug73nisyla" path="res://Scripts/Classes/MoveResource.gd" id="1_oaifq"]
+[ext_resource type="Script" uid="uid://c6nf5ig0hukns" path="res://Scripts/Classes/ItemResource.gd" id="2_dwam8"]
+
+[sub_resource type="Resource" id="Resource_hrany"]
+script = ExtResource("1_oaifq")
+name = "Strike"
+actionCode = "EDM5"
+cost = 1
+range = Vector2i(3, 0)
+metadata/_custom_type_script = "uid://dpkug73nisyla"
+
+[sub_resource type="Resource" id="Resource_wbu0y"]
+script = ExtResource("1_oaifq")
+name = "Cleave"
+actionCode = "EAD3"
+cost = 2
+range = Vector2i(3, 0)
+metadata/_custom_type_script = "uid://dpkug73nisyla"
+
+[resource]
+script = ExtResource("2_dwam8")
+name = "Great Sword"
+itemType = "Weapon"
+itemClass1 = "noble"
+move1 = SubResource("Resource_hrany")
+move2 = SubResource("Resource_wbu0y")
+description = "A large sword made by john. He is a great black smith, back on the surface."
+metadata/_custom_type_script = "uid://c6nf5ig0hukns"

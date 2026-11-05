@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ne67k5nda5s8"
-path="res://.godot/imported/MountanBackground-trees1.png-d788d28e1e93856dbae9ce437455e699.ctex"
+uid="uid://bdyt7xvmtolk3"
+path="res://.godot/imported/shadow.png-faf30c48f1498a3a6657cb1815a5d825.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MountanBackground-trees1.png"
-dest_files=["res://.godot/imported/MountanBackground-trees1.png-d788d28e1e93856dbae9ce437455e699.ctex"]
+source_file="res://Assets/shadow.png"
+dest_files=["res://.godot/imported/shadow.png-faf30c48f1498a3a6657cb1815a5d825.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0inr17gem43s"
-path="res://.godot/imported/MountanBackground-mountans2.png-f908c38c826443e2e988f899d295ccab.ctex"
+uid="uid://d22f73dttdted"
+path="res://.godot/imported/onceGifted-Outline.png-f4b21d1c44e29129577f774dff1bc554.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MountanBackground-mountans2.png"
-dest_files=["res://.godot/imported/MountanBackground-mountans2.png-f908c38c826443e2e988f899d295ccab.ctex"]
+source_file="res://Assets/onceGifted-Outline.png"
+dest_files=["res://.godot/imported/onceGifted-Outline.png-f4b21d1c44e29129577f774dff1bc554.ctex"]
 
 [params]
 

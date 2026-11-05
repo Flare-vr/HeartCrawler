@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CombatResource" format=3 uid="uid://bjrdno7r48vl6"]
+
+[ext_resource type="Resource" uid="uid://d1j804ne6lmli" path="res://Objects/Enemys/MarrowMageObject.tres" id="1_q656k"]
+[ext_resource type="Script" uid="uid://be763f80vknok" path="res://Scripts/Classes/CombatResource.gd" id="2_ova4x"]
+
+[resource]
+script = ExtResource("2_ova4x")
+enemy1 = ExtResource("1_q656k")
+enemy2 = ExtResource("1_q656k")
+enemy3 = ExtResource("1_q656k")
+enemy4 = ExtResource("1_q656k")
+enemy5 = ExtResource("1_q656k")
+metadata/_custom_type_script = "uid://be763f80vknok"

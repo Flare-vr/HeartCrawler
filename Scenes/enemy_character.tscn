@@ -1,45 +1,72 @@
 [gd_scene format=3 uid="uid://bxas2am5sqg3q"]
 
 [ext_resource type="Script" uid="uid://by0l8n61crqmq" path="res://Scripts/enemy_character.gd" id="1_sqa42"]
-[ext_resource type="Script" uid="uid://nepv80vm6h4" path="res://Scripts/AttackResource.gd" id="2_5k6cu"]
-[ext_resource type="Script" uid="uid://dpkug73nisyla" path="res://Scripts/MoveResource.gd" id="2_n37lv"]
+[ext_resource type="Texture2D" uid="uid://bdyt7xvmtolk3" path="res://Assets/shadow.png" id="2_n37lv"]
+[ext_resource type="Texture2D" uid="uid://b8bkestjxfypj" path="res://Assets/CrystalZombieSprite.png" id="3_5k6cu"]
 [ext_resource type="Texture2D" uid="uid://d2b531bg28672" path="res://Assets/BloodMarrow.png" id="3_n37lv"]
 [ext_resource type="Texture2D" uid="uid://dq7pvb56pxqkq" path="res://Assets/ButtonsAndStuff.png" id="4_umhxm"]
 [ext_resource type="Texture2D" uid="uid://d0h5w3dgd4b6a" path="res://Assets/EnemyIntentionMarker.png" id="5_5k6cu"]
 
-[sub_resource type="Resource" id="Resource_drdnd"]
-script = ExtResource("2_n37lv")
-name = "Claw"
-actionCode = "PDM1"
-cost = 1
-metadata/_custom_type_script = "uid://dpkug73nisyla"
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr7ed"]
+atlas = ExtResource("3_n37lv")
+region = Rect2(64, 0, 64, 11)
 
-[sub_resource type="Resource" id="Resource_ioaeq"]
-script = ExtResource("2_n37lv")
-name = "Blood Rend"
-actionCode = "PDM5,EDM2"
-cost = 3
-metadata/_custom_type_script = "uid://dpkug73nisyla"
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsqgu"]
+atlas = ExtResource("3_5k6cu")
+region = Rect2(0, 0, 64, 80)
 
-[sub_resource type="Resource" id="Resource_kvg18"]
-script = ExtResource("2_5k6cu")
-attackPattern = [0, 1]
-attack1 = SubResource("Resource_drdnd")
-attack2 = SubResource("Resource_ioaeq")
-metadata/_custom_type_script = "uid://nepv80vm6h4"
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3ht4"]
+atlas = ExtResource("3_5k6cu")
+region = Rect2(64, 0, 64, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nsn3q"]
 atlas = ExtResource("3_n37lv")
 region = Rect2(0, 0, 64, 80)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oikph"]
+atlas = ExtResource("3_n37lv")
+region = Rect2(64, 0, 64, 80)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_axu16"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nsn3q")
+"texture": SubResource("AtlasTexture_wr7ed")
+}],
+"loop": 0,
+"name": &"A",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsqgu")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"Crystal Zombie-Alive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3ht4")
+}],
+"loop": 1,
+"name": &"Crystal Zombie-Corpse",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsn3q")
+}],
+"loop": 0,
+"name": &"Marrow Mage-Alive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oikph")
+}],
+"loop": 0,
+"name": &"Marrow Mage-Corpse",
 "speed": 5.0
 }]
 
@@ -130,15 +157,20 @@ offset_right = 31.0
 offset_bottom = 39.0
 disabled = true
 script = ExtResource("1_sqa42")
-options = SubResource("Resource_kvg18")
 
 [node name="Timer" type="Timer" parent="." unique_id=1842346774]
 wait_time = 1.6
 one_shot = true
 
+[node name="Shadow" type="Sprite2D" parent="." unique_id=344657134]
+position = Vector2(30, 67)
+texture = ExtResource("2_n37lv")
+
 [node name="EnemySprite" type="AnimatedSprite2D" parent="." unique_id=1280084777]
 position = Vector2(32, 40)
 sprite_frames = SubResource("SpriteFrames_axu16")
+animation = &"A"
+autoplay = "A"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1546574614]
 layout_mode = 0
