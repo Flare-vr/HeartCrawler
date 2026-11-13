@@ -131,7 +131,11 @@ position = Vector2(-1, 28)
 texture = ExtResource("4_w775p")
 
 [node name="ChoiceColor" type="AnimatedSprite2D" parent="." unique_id=580776309]
+<<<<<<< Updated upstream
 self_modulate = Color(0.42532548, 0.18303627, 0.19745302, 1)
+=======
+self_modulate = Color(0.96822816, 0, 0.26596317, 1)
+>>>>>>> Stashed changes
 sprite_frames = SubResource("SpriteFrames_ews8v")
 animation = &"Gifted"
 
