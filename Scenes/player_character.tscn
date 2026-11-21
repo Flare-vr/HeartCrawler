@@ -131,17 +131,17 @@ position = Vector2(-1, 28)
 texture = ExtResource("4_w775p")
 
 [node name="ChoiceColor" type="AnimatedSprite2D" parent="." unique_id=580776309]
-self_modulate = Color(0.42532548, 0.18303627, 0.19745302, 1)
+self_modulate = Color(0.34163252, 0.10446047, 0.062445268, 1)
 sprite_frames = SubResource("SpriteFrames_ews8v")
-animation = &"Gifted"
+animation = &"Noble"
 
 [node name="NonColor" type="AnimatedSprite2D" parent="." unique_id=179912887]
 sprite_frames = SubResource("SpriteFrames_w775p")
-animation = &"Gifted"
+animation = &"Noble"
 
 [node name="Outline" type="AnimatedSprite2D" parent="." unique_id=1142178179]
 sprite_frames = SubResource("SpriteFrames_o0f8b")
-animation = &"Gifted"
+animation = &"Noble"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1815659994]
 offset_left = -26.0

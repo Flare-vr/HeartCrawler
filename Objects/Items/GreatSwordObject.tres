@@ -23,7 +23,6 @@ metadata/_custom_type_script = "uid://dpkug73nisyla"
 script = ExtResource("2_dwam8")
 name = "Great Sword"
 itemType = "Weapon"
-itemClass1 = "noble"
 move1 = SubResource("Resource_hrany")
 move2 = SubResource("Resource_wbu0y")
 description = "A large sword made by john. He is a great black smith, back on the surface."

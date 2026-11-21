@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://ugurjeullei"]
+
+[ext_resource type="Script" uid="uid://dpkug73nisyla" path="res://Scripts/Classes/MoveResource.gd" id="1_epo1a"]
+[ext_resource type="Script" uid="uid://c6nf5ig0hukns" path="res://Scripts/Classes/ItemResource.gd" id="2_4glmo"]
+
+[sub_resource type="Resource" id="Resource_g4v7s"]
+script = ExtResource("1_epo1a")
+name = "Test1"
+actionCode = "ADP3,EDM1"
+cost = 3
+range = Vector2i(1, 3)
+Description = "\"The life of another is worth more than your own\" You have heard this quote many times from the Silver Church. Wheither you believe it or not your skills have been honed around it.
+
+This attack deals 1 damage to 1 target enemy. Each time you protect an ally from an attack, this attack deals 3 more damage."
+metadata/_custom_type_script = "uid://dpkug73nisyla"
+
+[sub_resource type="Resource" id="Resource_yf5fn"]
+script = ExtResource("1_epo1a")
+name = "Test2"
+actionCode = "PHB2, SHB6"
+cost = 2
+range = Vector2i(-2, -4)
+Description = "You know the Twin angels want you to join them. And yet you use their power for just little longer. Hopefuly that is all you need.
+
+Heal 2 blood damage from target player, or Heat 6 blood damage from you."
+metadata/_custom_type_script = "uid://dpkug73nisyla"
+
+[resource]
+script = ExtResource("2_4glmo")
+name = "Silver Sword"
+rarity = "Just like you"
+itemType = "Weapon"
+itemClass = "noble"
+move1 = SubResource("Resource_g4v7s")
+move2 = SubResource("Resource_yf5fn")
+description = "A sword Gifted to you by the Silver Church. You might have entered here in their name, or maybe it is all you had or all you could afford. 
+
+On the pommel is an engraving of two winged creatures, a Hawk and a bat though you might have never known if you were never told. Together they form the moon. This is the symbol of the Silver church "
+metadata/_custom_type_script = "uid://c6nf5ig0hukns"

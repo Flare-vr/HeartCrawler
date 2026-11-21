@@ -5,4 +5,4 @@ class_name Move
 @export var actionCode:String 
 @export var cost: int
 @export var range: Vector2i
-@export_multiline() var Description: String
+@export_multiline() var description: String
